@@ -7,7 +7,7 @@ extends Area2D
 var speed = 5
 var canMoveVert = false
 onready var ladderArea := get_node("../Ladder")
-onready var lowerBound = position.y
+onready var upperBound = position.y
 #var groundArea : Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,11 +17,12 @@ func _ready():
 func _process(delta):
 	
 	#input
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") and (position.y == upperBound or position.y == 100):# and position.y > 100 and position.y < upperBound:
 		position.x += speed
 		pass
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") and (position.y == upperBound or position.y == 100 and position.x > 480):
 		position.x -= speed
+		
 	if canMoveVert and Input.is_action_pressed("up") and position.y > 100:
 		position.y -= speed / 2
 	if canMoveVert and Input.is_action_pressed("down"):
@@ -29,7 +30,8 @@ func _process(delta):
 		
 	#bounds
 	position.x = clamp(position.x, 40, 988)
-	position.y = clamp(position.y, 100, lowerBound)
+	position.y = clamp(position.y, 100, upperBound)
+	
 	pass
 
 #func _physics_process(delta):
