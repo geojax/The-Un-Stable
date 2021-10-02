@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Art/Background.png" type="Texture" id=1]
 [ext_resource path="res://Medbay.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Fireworks.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Art/FarmerTEMP.png" type="Texture" id=8]
+[ext_resource path="res://Portal.gd" type="Script" id=9]
+[ext_resource path="res://Medbay.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,7 +32,6 @@ script = ExtResource( 5 )
 position = Vector2( 513.351, 296.935 )
 scale = Vector2( 1, 0.98194 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Farmer" type="Area2D" parent="."]
@@ -55,9 +56,11 @@ position = Vector2( 260.015, 496.535 )
 
 [node name="Portal" parent="." instance=ExtResource( 7 )]
 position = Vector2( 799.76, 92.0978 )
+script = ExtResource( 9 )
 
 [node name="Medbay" parent="." instance=ExtResource( 2 )]
 position = Vector2( 900.471, 507.402 )
+script = ExtResource( 10 )
 
 [connection signal="area_entered" from="Farmer" to="Farmer" method="_on_KinematicBody2D2_area_entered"]
 [connection signal="area_exited" from="Farmer" to="Farmer" method="_on_Farmer_area_exited"]
