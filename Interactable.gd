@@ -8,6 +8,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Area2D.connect("area_entered", self, "_on_Area2D_area_entered")
+	$Area2D.connect("area_exited", self, "_on_Area2D_area_exited")
+	$TypingGame.visible = false
 	pass # Replace with function body.
 
 
@@ -17,5 +20,11 @@ func _ready():
 
 
 func _on_Area2D_area_entered(area):
-	$Node2D/LineEdit.grab_focus()
+	$TypingGame/LineEdit.grab_focus()
+	$TypingGame.visible = true
+	pass # Replace with function body.
+
+
+func _on_Area2D_area_exited(area):
+	$TypingGame.visible = false
 	pass # Replace with function body.

@@ -22,10 +22,9 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.41435, 0.41435 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
-[node name="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="TypingGame" parent="." instance=ExtResource( 3 )]
 position = Vector2( -107.284, 5.68656 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -35,3 +34,4 @@ position = Vector2( -8.48309, 36.76 )
 shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
