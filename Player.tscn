@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Art/Background.png" type="Texture" id=1]
 [ext_resource path="res://Medbay.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Art/Heart2.png" type="Texture" id=11]
 [ext_resource path="res://Art/Heart1.png" type="Texture" id=12]
 [ext_resource path="res://Lives.gd" type="Script" id=13]
+[ext_resource path="res://Horses.gd" type="Script" id=14]
+[ext_resource path="res://Art/HorseHead.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -25,13 +27,13 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 23.0764, 89.24 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16.7591, 196.2 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.0784314, 0.443137, 0.0156863, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -58,7 +60,7 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
 position = Vector2( 581.582, 371.478 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Fireworks" parent="." instance=ExtResource( 6 )]
 position = Vector2( 260.015, 496.535 )
@@ -98,12 +100,20 @@ margin_top = 576.0
 margin_right = 1126.0
 margin_bottom = 599.0
 rect_rotation = -90.0
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Horses" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="Sprite" type="Sprite" parent="Horses"]
+position = Vector2( 83.7563, 100.354 )
+scale = Vector2( 0.0652535, 0.0652535 )
+texture = ExtResource( 15 )
+offset = Vector2( -260.958, 150.588 )
 [connection signal="area_entered" from="Farmer" to="Farmer" method="_on_KinematicBody2D2_area_entered"]
 [connection signal="area_exited" from="Farmer" to="Farmer" method="_on_Farmer_area_exited"]
