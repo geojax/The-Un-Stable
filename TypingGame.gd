@@ -10,6 +10,9 @@ var viableChars := ["Z", "X", "C", "V"]
 onready var label1 = get_node("Label")
 onready var label2 = get_node("Label2")
 onready var lineEdit = get_node("LineEdit")
+
+signal failure
+signal success
 # Called when the node enters the scene tree for the first time.
 
 func resetGame():
@@ -39,13 +42,14 @@ func _on_LineEdit_text_changed(new_text):
 		if new_text != code.substr(0, len(new_text)):
 			$AnimationPlayer.play("Failure")
 			#animation calls resetGame()!
+			emit_signal("failure")
 			pass
 		label2.text += code[progress]
 		if progress < 3:
 			progress += 1
 			
 	if progress == 3 and new_text == code:
-		print("success")
+		emit_signal("success")
 		resetGame()
 	pass # Replace with function body.
 

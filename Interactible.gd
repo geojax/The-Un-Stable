@@ -5,11 +5,12 @@ extends Node2D
 # var a = 2
 # var b = "text"
 onready var typingGame := get_node("TypingGame")
-
+signal failure
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("area_entered", self, "_on_Area2D_area_entered")
 	$Area2D.connect("area_exited", self, "_on_Area2D_area_exited")
+	typingGame.connect("failure", self, "_on_TypingGame_fail")
 	typingGame.visible = false
 	pass # Replace with function body.
 
@@ -29,3 +30,6 @@ func _on_Area2D_area_entered(area):
 func _on_Area2D_area_exited(area):
 	typingGame.visible = false
 	pass # Replace with function body.
+
+func _on_TypingGame_fail():
+	emit_signal("failure")

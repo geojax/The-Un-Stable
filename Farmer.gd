@@ -1,23 +1,17 @@
 extends Area2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var speed = 5
 var canMoveVert = false
 onready var ladderArea := get_node("../Ladder")
 onready var upperBound = position.y
-#var groundArea : Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	#input
-	if Input.is_action_pressed("right") and (position.y == upperBound or position.y == 100):# and position.y > 100 and position.y < upperBound:
+	if Input.is_action_pressed("right") and (position.y == upperBound or position.y == 100):
 		position.x += speed
 		pass
 	if Input.is_action_pressed("left") and (position.y == upperBound or position.y == 100 and position.x > 480):
