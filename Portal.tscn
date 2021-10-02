@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Art/Portal1.png" type="Texture" id=1]
+[ext_resource path="res://Art/Portal2.png" type="Texture" id=2]
+[ext_resource path="res://TypingGame.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Portal" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.41435, 0.41435 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( -136.032, 6.15784 )

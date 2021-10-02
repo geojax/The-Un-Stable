@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FarmerTEMP.png-793f8ffabe4f0d0d8256218022d4c513.stex"
+path="res://.import/Fireworks.png-199d212d7fa2bb2ee9c6474bb0877151.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FarmerTEMP.png"
-dest_files=[ "res://.import/FarmerTEMP.png-793f8ffabe4f0d0d8256218022d4c513.stex" ]
+source_file="res://Art/Fireworks.png"
+dest_files=[ "res://.import/Fireworks.png-199d212d7fa2bb2ee9c6474bb0877151.stex" ]
 
 [params]
 

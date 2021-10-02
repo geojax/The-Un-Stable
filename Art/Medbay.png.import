@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background.png-d346e9ce37c7294bb8a0c89de5d380cd.stex"
+path="res://.import/Medbay.png-5551b24fa28ea832811ff4089f0dec23.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Background.png"
-dest_files=[ "res://.import/Background.png-d346e9ce37c7294bb8a0c89de5d380cd.stex" ]
+source_file="res://Art/Medbay.png"
+dest_files=[ "res://.import/Medbay.png-5551b24fa28ea832811ff4089f0dec23.stex" ]
 
 [params]
 
