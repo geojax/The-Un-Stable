@@ -33,6 +33,7 @@ script = ExtResource( 5 )
 position = Vector2( 513.351, 296.935 )
 scale = Vector2( 1, 0.98194 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Farmer" type="Area2D" parent="."]

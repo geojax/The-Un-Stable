@@ -9,7 +9,7 @@ var progress := 0
 var viableChars := ["Z", "X", "C", "V"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$LineEdit.grab_focus()
+	#$LineEdit.grab_focus()
 	for c in viableChars:
 		code += viableChars[rand_range(0, 4)]
 	$Label.text = code
