@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var typingGame := get_node("TypingGame")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,11 +20,12 @@ func _ready():
 
 
 func _on_Area2D_area_entered(area):
+	typingGame.resetGame()
 	$TypingGame/LineEdit.grab_focus()
-	$TypingGame.visible = true
+	typingGame.visible = true
 	pass # Replace with function body.
 
 
 func _on_Area2D_area_exited(area):
-	$TypingGame.visible = false
+	typingGame.visible = false
 	pass # Replace with function body.

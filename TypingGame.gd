@@ -7,12 +7,24 @@ extends Node2D
 var code := String()
 var progress := 0
 var viableChars := ["Z", "X", "C", "V"]
+onready var label1 = get_node("Label")
+onready var label2 = get_node("Label2")
+onready var lineEdit = get_node("LineEdit")
 # Called when the node enters the scene tree for the first time.
+
+func resetGame():
+	progress = 0
+	lineEdit.clear()
+	label2.text = String()
+	code = String()
+	for _c in range(0, 4):
+		code += viableChars[rand_range(0, 4)]
+	label1.text = code
+
 func _ready():
 	#$LineEdit.grab_focus()
-	for c in viableChars:
-		code += viableChars[rand_range(0, 4)]
-	$Label.text = code
+	resetGame()
+	label1.text = code
 	pass # Replace with function body.
 
 
@@ -21,16 +33,23 @@ func _ready():
 #	pass
 
 func _on_LineEdit_text_changed(new_text):
-	new_text = new_text.to_upper()
-	if new_text != code.substr(0, len(new_text)):
-		$AnimationPlayer.play("Failure")
-		pass
-	$Label2.text += code[progress]
-	if progress < 3:
-		progress += 1
+	if (new_text != ""):
+		new_text = new_text.to_upper()
+		#fail state
+		if new_text != code.substr(0, len(new_text)):
+			$AnimationPlayer.play("Failure")
+			#animation calls resetGame()!
+			pass
+		label2.text += code[progress]
+		if progress < 3:
+			progress += 1
+			
+	if progress == 3 and new_text == code:
+		print("success")
+		resetGame()
 	pass # Replace with function body.
 
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	queue_free()
-	pass # Replace with function body.
+#
+#func _on_AnimationPlayer_animation_finished(anim_name):
+#	queue_free()
+#	pass # Replace with function body.
