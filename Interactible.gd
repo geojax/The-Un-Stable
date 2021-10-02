@@ -10,7 +10,7 @@ onready var typingGame := get_node("TypingGame")
 func _ready():
 	$Area2D.connect("area_entered", self, "_on_Area2D_area_entered")
 	$Area2D.connect("area_exited", self, "_on_Area2D_area_exited")
-	$TypingGame.visible = false
+	typingGame.visible = false
 	pass # Replace with function body.
 
 
