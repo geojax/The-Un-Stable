@@ -18,8 +18,10 @@ func _ready():
 	pass 
 
 func _on_Fireworks_succeed():
-	#successes ++1
-	horseTimer.start(horseTime)
+	successes += 1
+	if (successes == 3):
+		horseTimer.start(horseTime)
+		successes = 0
 	pass
 
 func _no_time():
@@ -27,6 +29,8 @@ func _no_time():
 	pass
 	
 func _process(delta):
-	$Sprite.position.x = ((horseTime-horseTimer.time_left)*50) + 100
+	$Sprite.scale = ((horseTime-horseTimer.time_left)*Vector2.ONE*0.025)
+	$Sprite.modulate.a8= int((horseTime- horseTimer.time_left) / horseTime*255)
+	#$Sprite.position.x = ((horseTime-horseTimer.time_left)*50) + 100
 	pass
 

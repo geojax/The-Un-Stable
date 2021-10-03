@@ -1,16 +1,41 @@
 extends "Interactible.gd"
 
+var portalTime := 15
+var portalTimer
+var isStable := false
+var successes := 0
+var portalProgress
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+#	portalProgress = get_node("PortalProgress")
+	portalTimer = Timer.new()
+	portalTimer.set_one_shot(true)
+	portalTimer.connect("timeout", self, "_no_time")
+	add_child(portalTimer)
+	portalTimer.start(portalTime)
+	pass 
+	
+func _on_TypingGame_succeed():
+	successes += 1
+	if successes == 3:
+		isStable = true
+		portalTimer.start(portalTime)
+		successes = 0 
+		$AnimationPlayer.stop()
+		$AnimatedSprite.scale = Vector2(0.414, 0.414)
+		
+func _on_TypingGame_fail():
+	successes = 0
+	portalTimer.start(portalTimer.time_left * 0.5)
+	pass
+	
+func _no_time():
+	isStable = false
+	$AnimationPlayer.play("Failure")
+	pass
+	
+func _process(delta):
+	$PortalProgress.value = portalTimer.time_left / portalTime * 100
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

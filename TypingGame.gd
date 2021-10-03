@@ -9,6 +9,7 @@ var progress := 0
 var viableChars := ["Z", "X", "C", "V"]
 onready var label1 = get_node("Label")
 onready var label2 = get_node("Label2")
+onready var label3 = get_node("Label3")
 onready var lineEdit = get_node("LineEdit")
 
 signal failure
@@ -23,11 +24,13 @@ func resetGame():
 	for _c in range(0, 4):
 		code += viableChars[rand_range(0, 4)]
 	label1.text = code
+	label3.text = code
 
 func _ready():
 	#$LineEdit.grab_focus()
 	resetGame()
 	label1.text = code
+	label3.text = code
 	pass # Replace with function body.
 
 

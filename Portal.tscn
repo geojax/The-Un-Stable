@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/Portal1.png" type="Texture" id=1]
 [ext_resource path="res://Art/Portal2.png" type="Texture" id=2]
@@ -15,6 +15,22 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 139.852, 85.5981 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Failure"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.41435, 0.41435 ), Vector2( 1, 1 ), Vector2( 0.41435, 0.41435 ) ]
+}
 
 [node name="Portal" type="Node2D"]
 script = ExtResource( 4 )
@@ -33,3 +49,6 @@ position = Vector2( -107.284, 5.68656 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -8.48309, 36.76 )
 shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Failure = SubResource( 3 )
