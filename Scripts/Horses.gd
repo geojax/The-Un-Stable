@@ -23,6 +23,7 @@ func _on_Fireworks_succeed():
 	if (successes == 3):
 		horseTimer.start(HORSE_TIME)
 		successes = 0
+		$AudioStreamPlayer2D.play()
 	pass
 
 func _no_time():
