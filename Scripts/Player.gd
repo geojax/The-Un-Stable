@@ -45,3 +45,9 @@ func _on_Medbay_fail():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Farmer_damaged():
+	numLives -= 1
+	lives.changeLives(numLives)
+	pass # Replace with function body.

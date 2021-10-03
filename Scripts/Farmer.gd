@@ -9,6 +9,9 @@ onready var ladderArea := get_node("../Ladder")
 onready var platformArea := get_node("../Platform")
 onready var upperBound = position.y
 onready var lives = get_node("../Lives")
+onready var rootNode = get_node("..")
+
+signal damaged
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -27,21 +30,20 @@ func _process(delta):
 	if canMoveVert and Input.is_action_pressed("down"):
 		position.y += speed / 2
 		
+	#ie if not on ladder and gravity is on, i.e. you had exited platform
 	if ((not canMoveVert) and gravityOn):
 		position.y += GRAVITY
 		if (position.y <= upperBound):
 			position.x -= 2
-		if (lifeChanged == false):
-			lives.changeLives(lives.totalLives - 1)
-			lifeChanged = true
+#		if (lifeChanged == false):
+#			emit_signal("damaged")
+#			lifeChanged = true
+			
 	#bounds
 	position.x = clamp(position.x, 40, 988)
 	position.y = clamp(position.y, 100, upperBound)
 	
 	pass
-
-#func _physics_process(delta):
-#	if self.
 
 func _on_KinematicBody2D2_area_entered(area):
 	if area == ladderArea:

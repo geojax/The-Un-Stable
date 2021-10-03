@@ -1,24 +1,24 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Art/Background.png" type="Texture" id=1]
-[ext_resource path="res://Medbay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Farmer.gd" type="Script" id=3]
-[ext_resource path="res://Art/Background2.png" type="Texture" id=4]
-[ext_resource path="res://Player.gd" type="Script" id=5]
-[ext_resource path="res://Fireworks.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Portal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Art/FarmerTEMP.png" type="Texture" id=8]
-[ext_resource path="res://Portal.gd" type="Script" id=9]
-[ext_resource path="res://Medbay.gd" type="Script" id=10]
-[ext_resource path="res://Art/Heart2.png" type="Texture" id=11]
-[ext_resource path="res://Art/Heart1.png" type="Texture" id=12]
-[ext_resource path="res://Lives.gd" type="Script" id=13]
-[ext_resource path="res://Horses.gd" type="Script" id=14]
-[ext_resource path="res://Art/HorseHead.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/Fireworks.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Medbay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Farmer.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Lives.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Medbay.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Portal.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Horses.gd" type="Script" id=9]
+[ext_resource path="res://Art/FarmerTEMP.png" type="Texture" id=10]
+[ext_resource path="res://Art/Originalhorse.png" type="Texture" id=11]
+[ext_resource path="res://Art/Heart2.png" type="Texture" id=12]
+[ext_resource path="res://Art/Heart1.png" type="Texture" id=13]
+[ext_resource path="res://Art/Background2.png" type="Texture" id=14]
+[ext_resource path="res://Art/Background.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -32,31 +32,50 @@ extents = Vector2( 16.7591, 196.2 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.0784314, 0.443137, 0.0156863, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id=5]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 262.927, 15.8628 )
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="Background" type="AnimatedSprite" parent="."]
 position = Vector2( 513.351, 296.935 )
 scale = Vector2( 1, 0.98194 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Farmer" type="Area2D" parent="."]
 position = Vector2( 73, 442.156 )
 gravity_vec = Vector2( 0, 0 )
-script = ExtResource( 3 )
+collision_layer = 3
+script = ExtResource( 4 )
 
-[node name="FarmerTEMP" type="Sprite" parent="Farmer"]
-texture = ExtResource( 8 )
+[node name="Farmer" type="Sprite" parent="Farmer"]
+texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
 shape = SubResource( 2 )
+
+[node name="Horses" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Horses"]
+position = Vector2( 88.9254, 168.543 )
+scale = Vector2( 0.168093, 0.168093 )
+texture = ExtResource( 11 )
+offset = Vector2( 492.438, -148.28 )
 
 [node name="Ladder" type="Area2D" parent="."]
 
@@ -64,49 +83,37 @@ shape = SubResource( 2 )
 position = Vector2( 581.582, 371.478 )
 shape = SubResource( 3 )
 
-[node name="Fireworks" parent="." instance=ExtResource( 6 )]
+[node name="Fireworks" parent="." instance=ExtResource( 1 )]
 position = Vector2( 260.015, 496.535 )
 
-[node name="Portal" parent="." instance=ExtResource( 7 )]
+[node name="Portal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 799.76, 92.0978 )
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
-[node name="PortalProgress" type="ProgressBar" parent="Portal"]
-margin_left = -220.761
-margin_top = -58.0994
-margin_right = -86.7614
-margin_bottom = -35.0994
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Medbay" parent="." instance=ExtResource( 2 )]
+[node name="Medbay" parent="." instance=ExtResource( 3 )]
 position = Vector2( 900.471, 507.402 )
-script = ExtResource( 10 )
+script = ExtResource( 6 )
 
 [node name="Lives" type="Node2D" parent="."]
 position = Vector2( 812.043, 279.97 )
-script = ExtResource( 13 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Lives"]
 scale = Vector2( 0.0855319, 0.0855319 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="Sprite2" type="Sprite" parent="Lives"]
 position = Vector2( 83.2896, 3.10785 )
 scale = Vector2( 0.0822476, 0.0822476 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="Sprite3" type="Sprite" parent="Lives"]
 position = Vector2( 173.647, 7.83371 )
 scale = Vector2( 0.09401, 0.09401 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="MedbayProgress" type="ProgressBar" parent="."]
 margin_left = 992.0
@@ -121,19 +128,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Horses" type="Node2D" parent="."]
-script = ExtResource( 14 )
-
-[node name="Sprite" type="Sprite" parent="Horses"]
-position = Vector2( 122.048, 117.502 )
-scale = Vector2( 0.0652535, 0.0652535 )
-texture = ExtResource( 15 )
-offset = Vector2( -260.958, 150.588 )
-
 [node name="Platform" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 position = Vector2( 786.164, 188.029 )
 shape = SubResource( 6 )
+
 [connection signal="area_entered" from="Farmer" to="Farmer" method="_on_KinematicBody2D2_area_entered"]
 [connection signal="area_exited" from="Farmer" to="Farmer" method="_on_Farmer_area_exited"]
+[connection signal="damaged" from="Farmer" to="." method="_on_Farmer_damaged"]

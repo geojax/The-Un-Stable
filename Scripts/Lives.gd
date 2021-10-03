@@ -4,7 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var totalLives := 3
+const MAX_LIVES := 3
 onready var hearts = get_children()
 
 
@@ -17,7 +17,6 @@ func changeLives(newNum):
 			hearts[i].visible = true
 		else:
 			hearts[i].visible = false
-	totalLives = newNum
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

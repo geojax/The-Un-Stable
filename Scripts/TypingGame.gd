@@ -27,16 +27,10 @@ func resetGame():
 	label3.text = code
 
 func _ready():
-	#$LineEdit.grab_focus()
 	resetGame()
 	label1.text = code
 	label3.text = code
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _on_LineEdit_text_changed(new_text):
 	if (new_text != ""):
@@ -55,8 +49,3 @@ func _on_LineEdit_text_changed(new_text):
 		emit_signal("success")
 		resetGame()
 	pass # Replace with function body.
-
-#
-#func _on_AnimationPlayer_animation_finished(anim_name):
-#	queue_free()
-#	pass # Replace with function body.

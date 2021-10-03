@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art/Portal1.png" type="Texture" id=1]
 [ext_resource path="res://Art/Portal2.png" type="Texture" id=2]
-[ext_resource path="res://TypingGame.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Interactible.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/TypingGame.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Interactible.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,6 +32,19 @@ tracks/0/keys = {
 "values": [ Vector2( 0.41435, 0.41435 ), Vector2( 1, 1 ), Vector2( 0.41435, 0.41435 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0784314, 0.443137, 0.0156863, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=5]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [node name="Portal" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -52,3 +65,16 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Failure = SubResource( 3 )
+
+[node name="PortalProgress" type="ProgressBar" parent="."]
+margin_left = 79.1103
+margin_top = 108.888
+margin_right = 213.11
+margin_bottom = 131.888
+rect_rotation = -90.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
