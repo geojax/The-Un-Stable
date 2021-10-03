@@ -10,7 +10,7 @@ extents = Vector2( 69.8688, 29.8371 )
 [node name="Fireworks" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Fireworks" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.395015, 0.395015 )
 texture = ExtResource( 2 )
 

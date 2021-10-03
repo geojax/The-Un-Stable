@@ -6,9 +6,12 @@ var Fireworks
 const HORSE_TIME := 20
 const MAX_SPRITE_SIZE = .2
 var successes := 0;
-
+onready var fireworksSprite : Sprite 
+onready var fwSprites = [load("res://Art/FireworksEmpty.png"), load("res://Art/Fireworks1.png"),
+load("res://Art/Fireworks - Copy.png"), load("res://Art/Fireworks.png")]
 func _ready():
 	Fireworks = get_node("../Fireworks")
+	fireworksSprite = Fireworks.get_node("Sprite")
 	Fireworks.connect("success", self, "_on_Fireworks_succeed")
 	horseTimer = Timer.new()
 	horseTimer.set_wait_time(HORSE_TIME)
@@ -20,10 +23,12 @@ func _ready():
 
 func _on_Fireworks_succeed():
 	successes += 1
-	if (successes == 3):
+	if (successes % 4 == 3):
 		horseTimer.start(HORSE_TIME)
-		successes = 0
+		#successes = 0
 		$AudioStreamPlayer2D.play()
+	
+	fireworksSprite.texture = fwSprites[3 - successes % 4]
 	pass
 
 func _no_time():
