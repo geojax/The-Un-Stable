@@ -38,5 +38,9 @@ func _no_time():
 	
 func _process(delta):
 	$Sprite.scale = (HORSE_TIME - horseTimer.time_left) / HORSE_TIME * MAX_SPRITE_SIZE * Vector2.ONE
+	if horseTimer.time_left <= 10:
+		$AnimatedSprite.visible = true
+	else:
+		$AnimatedSprite.visible = false
 	pass
 
