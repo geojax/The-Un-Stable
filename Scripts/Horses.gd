@@ -23,12 +23,13 @@ func _ready():
 
 func _on_Fireworks_succeed():
 	successes += 1
-	if (successes % 4 == 3):
+	if (successes % 4 == 0):
 		horseTimer.start(HORSE_TIME)
 		#successes = 0
 		$AudioStreamPlayer2D.play()
+		Fireworks.get_node("AnimationPlayer").play("Firework")
 	
-	fireworksSprite.texture = fwSprites[3 - successes % 4]
+	fireworksSprite.texture = fwSprites[successes % 4]
 	pass
 
 func _no_time():

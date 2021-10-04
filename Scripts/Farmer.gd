@@ -19,13 +19,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#input
-	if Input.is_action_pressed("right") and (position.y == upperBound or position.y == 100):
+	if Input.is_action_pressed("right") and (position.y == upperBound or position.y == 210):
 		position.x += speed
 		pass
-	if Input.is_action_pressed("left") and (position.y == upperBound or position.y == 100):
+	if Input.is_action_pressed("left") and (position.y == upperBound or position.y == 210):
 		position.x -= speed
 		
-	if canMoveVert and Input.is_action_pressed("up") and position.y > 100:
+	if canMoveVert and Input.is_action_pressed("up") and position.y > 210:
 		position.y -= speed / 2
 	if canMoveVert and Input.is_action_pressed("down"):
 		position.y += speed / 2
@@ -41,7 +41,7 @@ func _process(delta):
 			
 	#bounds
 	position.x = clamp(position.x, 40, 988)
-	position.y = clamp(position.y, 100, upperBound)
+	position.y = clamp(position.y, 210, upperBound)
 	
 	pass
 

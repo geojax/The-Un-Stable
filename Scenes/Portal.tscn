@@ -51,7 +51,6 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.41435, 0.41435 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="TypingGame" parent="." instance=ExtResource( 3 )]

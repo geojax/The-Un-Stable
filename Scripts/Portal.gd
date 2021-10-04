@@ -8,7 +8,7 @@ onready var animSprite := get_node("AnimatedSprite")
 func _ready():
 #	portalProgress = get_node("PortalProgress")	
 	typingGame.connect("success", self, "stabilizeMore")
-	typingGame.connect("failure", self, "_on_TypingGame_fail")
+	#typingGame.connect("failure", self, "_on_TypingGame_fail")
 	pass 
 	
 func stabilizeMore():
