@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/UnstableGuitar.mp3-61e92611000c937eaac7eaad52fe21e9.mp3str"
+
+[deps]
+
+source_file="res://UnstableGuitar.mp3"
+dest_files=[ "res://.import/UnstableGuitar.mp3-61e92611000c937eaac7eaad52fe21e9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

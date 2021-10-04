@@ -11,5 +11,5 @@ dest_files=[ "res://.import/horseWinnie.ogg-64f7778a6a90228197c8a714548a933e.ogg
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
