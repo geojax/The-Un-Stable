@@ -19,6 +19,8 @@ func _ready():
 	horseTimer.connect("timeout", self, "_no_time")
 	add_child(horseTimer)
 	horseTimer.start()
+	
+	$gallopSound.play()
 	pass 
 
 func _on_Fireworks_succeed():
@@ -28,6 +30,7 @@ func _on_Fireworks_succeed():
 		#successes = 0
 		$AudioStreamPlayer2D.play()
 		Fireworks.get_node("AnimationPlayer").play("Firework")
+		$whinnieSound.play()
 	
 	fireworksSprite.texture = fwSprites[successes % 4]
 	pass
@@ -43,4 +46,6 @@ func _process(delta):
 	else:
 		$AnimatedSprite.visible = false
 	pass
+	
+	$gallopSound.volume_db = (HORSE_TIME - horseTimer.time_left) / HORSE_TIME * 60 - 60
 

@@ -27,7 +27,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 18 ) ],
 "loop": true,
@@ -35,26 +35,26 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7.31509, 114.968 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4.66595, 124.118 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 11.3749, 114.358 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.0784314, 0.443137, 0.0156863, 1 )
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=6]
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 228.776, 11.6815 )
 
 [node name="Node2D" type="Node2D"]
@@ -65,6 +65,7 @@ visible = false
 position = Vector2( 513.351, 296.935 )
 scale = Vector2( 1, 0.98194 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="NewBack" type="Sprite" parent="."]
@@ -85,21 +86,21 @@ texture = ExtResource( 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Farmer"]
 position = Vector2( -1.5741, 31.293 )
 scale = Vector2( 0.0850735, 0.0850735 )
-frames = SubResource( 7 )
-frame = 2
+frames = SubResource( 2 )
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
 position = Vector2( 0.598755, 33.7863 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Horses" parent="." instance=ExtResource( 9 )]
 
 [node name="Ladder" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
-position = Vector2( 596.55, 469.671 )
-shape = SubResource( 3 )
+position = Vector2( 595.396, 470.248 )
+shape = SubResource( 4 )
 
 [node name="Fireworks" parent="." instance=ExtResource( 1 )]
 position = Vector2( 337.899, 525.046 )
@@ -139,8 +140,8 @@ margin_top = 576.0
 margin_right = 1061.94
 margin_bottom = 599.0
 rect_rotation = -90.0
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -152,7 +153,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 position = Vector2( 817.302, 351.247 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
+
 [connection signal="area_entered" from="Farmer" to="Farmer" method="_on_KinematicBody2D2_area_entered"]
 [connection signal="area_exited" from="Farmer" to="Farmer" method="_on_Farmer_area_exited"]
 [connection signal="damaged" from="Farmer" to="." method="_on_Farmer_damaged"]

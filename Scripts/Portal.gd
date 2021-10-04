@@ -24,7 +24,7 @@ func _on_TypingGame_fail():
 	
 func _process(delta):
 	if stability > 0:
-		stability -= delta * .1
+		stability -= delta * .05
 		
 	$PortalProgress.value = (float(stability) / MAX_STABILITY) * 100
 	animSprite.speed_scale = 6 - stability
