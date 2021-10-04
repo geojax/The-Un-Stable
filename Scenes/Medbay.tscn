@@ -11,7 +11,7 @@ extents = Vector2( 91.4581, 68.7383 )
 script = ExtResource( 3 )
 
 [node name="TypingGame" parent="." instance=ExtResource( 2 )]
-position = Vector2( -18.0123, -103.067 )
+position = Vector2( -39.8592, -123.722 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.0796323, 0.0796323 )

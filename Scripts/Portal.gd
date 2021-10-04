@@ -6,7 +6,9 @@ var stability := 4.9
 var portalProgress
 var onCooldown = false
 onready var animSprite := get_node("AnimatedSprite")
+onready var FamilyPlayer := get_node("../FamilyPlayer")
 var portalTimer
+var livesSaved := 0
 
 func _ready():
 #	portalProgress = get_node("PortalProgress")	
@@ -26,6 +28,12 @@ func stabilizeMore():
 		stability = 0
 		portalTimer.start(COOLDOWN)
 		onCooldown = true
+		FamilyPlayer.play("Family")
+		livesSaved += 1
+		$FamilyCounter.text = str(5-livesSaved)
+		if livesSaved == 5:
+			get_tree().change_scene("res://Scenes/Ending.tscn")
+			pass
 		
 	print($PortalProgress.value)
 		

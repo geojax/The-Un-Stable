@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/TypingGame.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/FireworksEmpty.png" type="Texture" id=2]
@@ -10,9 +10,26 @@
 [ext_resource path="res://Art/Asset 8.png" type="Texture" id=8]
 [ext_resource path="res://Art/Asset 9.png" type="Texture" id=9]
 [ext_resource path="res://Art/Asset 11.png" type="Texture" id=10]
+[ext_resource path="res://Art/Asset 27.png" type="Texture" id=11]
+[ext_resource path="res://Art/Asset 26.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 69.8688, 29.8371 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Explode"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Firework"
@@ -157,6 +174,14 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Fireworks" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -165,7 +190,7 @@ scale = Vector2( 0.395015, 0.395015 )
 texture = ExtResource( 2 )
 
 [node name="TypingGame" parent="." instance=ExtResource( 1 )]
-position = Vector2( -48.0579, -101.155 )
+position = Vector2( -48.0579, -80.7979 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -174,6 +199,7 @@ position = Vector2( -2.58643, 21.4304 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Explode = SubResource( 6 )
 anims/Firework = SubResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -201,5 +227,10 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -4.671, -1000 )
 scale = Vector2( 0.0652986, 0.0652985 )
 frames = SubResource( 5 )
-frame = 2
+playing = true
+
+[node name="Explosion" type="AnimatedSprite" parent="."]
+visible = false
+scale = Vector2( 0.0629411, 0.0629411 )
+frames = SubResource( 7 )
 playing = true

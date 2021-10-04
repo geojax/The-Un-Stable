@@ -36,7 +36,7 @@ func _on_Fireworks_succeed():
 	pass
 
 func _no_time():
-	print("fail")
+	get_tree().change_scene("res://Scenes/Death.tscn")
 	pass
 	
 func _process(delta):

@@ -121,5 +121,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Failure = SubResource( 5 )
-
 [connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]

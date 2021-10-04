@@ -15,16 +15,19 @@ func _ready():
 	$Medbay.connect("failure", self, "_on_Medbay_fail")
 	pass # Replace with function body.
 
-func _process(delta):
-	if numLives == 3:
-		$MedbayProgress.value = 100
-	else:
-		$MedbayProgress.value = 0
+#func _process(delta):
+##	if numLives == 3:
+##		$MedbayProgress.value = 100
+###	else:
+###		$MedbayProgress.value = 0
 
 func _on_Fireworks_fail():
 	numLives -= 1
 	lives.changeLives(numLives)
+	$MedbayProgress.value = 0
+	$Fireworks.get_node("AnimationPlayer").play("Explode")
 	if numLives <= 0:
+		get_tree().change_scene("res://Scenes/Death.tscn")
 		print("Dead")
 	pass
 	
