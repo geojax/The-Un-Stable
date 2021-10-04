@@ -17,19 +17,19 @@ animations = [ {
 extents = Vector2( 139.852, 85.5981 )
 
 [sub_resource type="Animation" id=3]
-resource_name = "Failure"
-loop = true
+resource_name = "Cooldown"
+length = 10.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:scale")
+tracks/0/path = NodePath("AnimatedSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
+"times": PoolRealArray( 0, 8.5, 10 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.41435, 0.41435 ), Vector2( 1, 1 ), Vector2( 0.41435, 0.41435 ) ]
+"values": [ Color( 0.0627451, 0.580392, 0.0823529, 1 ), Color( 0.0627451, 0.580392, 0.0823529, 1 ), Color( 0.992157, 1, 0.992157, 1 ) ]
 }
 
 [sub_resource type="StyleBoxFlat" id=4]
@@ -49,21 +49,24 @@ corner_radius_bottom_left = 50
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.992157, 1, 0.992157, 1 )
 scale = Vector2( 0.41435, 0.41435 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="TypingGame" parent="." instance=ExtResource( 3 )]
-position = Vector2( -107.284, 5.68656 )
+position = Vector2( -161.221, 5.68656 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2( -8.48309, 36.76 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Failure = SubResource( 3 )
+anims/Cooldown = SubResource( 3 )
 
 [node name="PortalProgress" type="ProgressBar" parent="."]
 margin_left = 79.1103

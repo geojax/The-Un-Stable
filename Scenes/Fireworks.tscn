@@ -108,10 +108,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.2, 3 ),
-"transitions": PoolRealArray( 1.78381, 1.23114 ),
+"times": PoolRealArray( 0.2, 1, 3 ),
+"transitions": PoolRealArray( 1, 1.32, 1.32 ),
 "update": 0,
-"values": [ Vector2( -0.239544, -17.0063 ), Vector2( -0.24, -825 ) ]
+"values": [ Vector2( -0.24, -15 ), Vector2( -0.24, -110 ), Vector2( -0.24, -960 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("CPUParticles2D:amount")
@@ -123,7 +123,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 1, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 100, 25, 50 ]
+"values": [ 100, 25, 0 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("CPUParticles2D:emitting")
@@ -137,6 +137,9 @@ tracks/9/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.226563, 0.226563, 0.226563, 1, 0.945098, 0.94902, 0.968627, 0 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -153,9 +156,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0.226563, 0.226563, 0.226563, 1, 0.945098, 0.94902, 0.968627, 0 )
 
 [node name="Fireworks" type="Node2D"]
 script = ExtResource( 3 )
@@ -176,6 +176,18 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Firework = SubResource( 2 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( -0.24, -960 )
+amount = 100
+emission_shape = 1
+emission_sphere_radius = 13.31
+spread = 68.38
+gravity = Vector2( 0, 250 )
+radial_accel = 90.91
+scale_amount = 35.0
+scale_amount_random = 0.81
+color_ramp = SubResource( 3 )
+
 [node name="Launch" type="AnimatedSprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -2.8, -150 )
@@ -189,18 +201,5 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -4.671, -1000 )
 scale = Vector2( 0.0652986, 0.0652985 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2( -0.24, -825 )
-emitting = false
-amount = 50
-emission_shape = 1
-emission_sphere_radius = 13.31
-spread = 68.38
-gravity = Vector2( 0, 250 )
-radial_accel = 90.91
-scale_amount = 35.0
-scale_amount_random = 0.81
-color_ramp = SubResource( 3 )

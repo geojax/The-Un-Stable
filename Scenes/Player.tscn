@@ -65,7 +65,6 @@ visible = false
 position = Vector2( 513.351, 296.935 )
 scale = Vector2( 1, 0.98194 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="NewBack" type="Sprite" parent="."]
@@ -87,7 +86,7 @@ texture = ExtResource( 10 )
 position = Vector2( -1.5741, 31.293 )
 scale = Vector2( 0.0850735, 0.0850735 )
 frames = SubResource( 2 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
@@ -154,7 +153,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 position = Vector2( 817.302, 351.247 )
 shape = SubResource( 7 )
-
 [connection signal="area_entered" from="Farmer" to="Farmer" method="_on_KinematicBody2D2_area_entered"]
 [connection signal="area_exited" from="Farmer" to="Farmer" method="_on_Farmer_area_exited"]
 [connection signal="damaged" from="Farmer" to="." method="_on_Farmer_damaged"]
